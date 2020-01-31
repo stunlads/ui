@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
+// Components
 import { Layout } from '../components/layouts';
+import { SignUp } from '../components/particles/auth';
 
 export default class Index extends Component {
   render() {
@@ -30,40 +33,8 @@ export default class Index extends Component {
                         </a>
                       </p>
                     </div>
-                    <div
-                      className="col-lg-5 ml-auto"
-                      data-aos="fade-up"
-                      data-aos-delay={500}
-                    >
-                      <form action method="post" className="form-box">
-                        <h3 className="h4 text-black mb-4 text-center font-weight-bold">
-                          Register in seconds
-                        </h3>
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Email Addresss"
-                          />
-                        </div>
-                        <div className="form-group">
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Password"
-                          />
-                        </div>
-                        <div className="form-group mb-4">
-                          <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Re-type Password"
-                          />
-                        </div>
-                        <div className="form-group">
-                          <a className="btn btn-indigo w-100">Create Account</a>
-                        </div>
-                      </form>
+                    <div className="col-lg-5 ml-auto">
+                      <SignUp />
                     </div>
                   </div>
                 </div>
