@@ -6,13 +6,14 @@
     "dev": "next",
     "build": "next build",
     "start": "next start"
-  },  
+  },
   "repository": "https://github.com/yoourlink/ui.git",
   "author": "Yasar icli <yasaricli@gmail.com>",
   "license": "MIT",
-  
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "next": "^9.2.1",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
