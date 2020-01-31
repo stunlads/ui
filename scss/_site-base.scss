@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5,
 	background: $black;
 }
 .form-control {
-	height: 48px;
+	height: 55px;
 	// border-radius: 30px;
 	font-family: $font-family-sans-serif;
 	&:active, &:focus {
@@ -406,11 +406,14 @@ fieldset {
 
 		&.has-error {
 			.error-block {
-				font-size: 12px;
-				color: $red;
+				font-size: 11px;
+				color: $white;
 				position: absolute;
-				top: 15px;
-				right: 7px;
+				left: 7px;
+				top: -10px;
+				background: $red;
+				border-radius: 7px;
+				padding: 0 10px;
 			}
 		}
 	}

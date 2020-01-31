@@ -1,9 +1,10 @@
 import t from 'tcomb-form';
+import { Email, Username, Password } from '../../utils/refinements';
 
 const SignUpSchema = t.struct({
-  email: t.String,
-  username: t.String,
-  password: t.String
+  email:  Email,
+  username: Username,
+  password: Password
 });
 
 const SignUpOptions = {
@@ -11,19 +12,16 @@ const SignUpOptions = {
 
   fields: {
     email: {
-      error: 'Please enter an email address',
       attrs: {
         autoFocus: true,
         placeholder: 'Email address'
       }
     },
 
-    username: {
-      error: 'Please enter a username'
-    },
+    username: {},
 
     password: {
-      error: 'Please enter a password',
+      type: 'password',
       attrs: {
         placeholder: 'Create a password'
       }

@@ -10,8 +10,11 @@ export class SignUp extends Component {
   @boundMethod
   onSubmit(evt) {
     evt.preventDefault();
+    const value = this.refs.form.getValue();
 
-    const value = this.refs.form.getValue()
+    if (value) {
+      console.log(value);
+    }
   }
 
   render() {
