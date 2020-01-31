@@ -1,5 +1,6 @@
 import getConfig from 'next/config';
 import axios from 'axios';
+import _ from 'underscore';
 
 // configs.
 const { publicRuntimeConfig } = getConfig()
@@ -17,6 +18,13 @@ class Api {
 
   post(url, data) {
     return this.instance.post(url, data);
+  }
+
+  respToData({ data: { status, data } }) {
+    return {
+      isError: _.isEqual(status, 'error'),
+      data
+    }
   }
 }
 

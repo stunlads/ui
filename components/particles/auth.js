@@ -11,30 +11,43 @@ import Api from '../../utils/api';
 export class SignUp extends Component {
   state = {
     loading: false,
-    value: null
+    value: null,
+
+    emailError: {},
+    usernameError: {}
   };
 
   @boundMethod
-  async onSubmit(evt) {
+  onSubmit(evt) {
     evt.preventDefault();
     const value = this.refs.form.getValue();
 
     if (value) {
       this.setState({ loading: true });
 
-      const response = await Api.post('/users', {
-        email: value.email,
-        username: value.username,
-        password: value.password
-      });
+      Api.post('/users', this.state.value).then(resp => {
+        const { isError, data } = Api.respToData(resp);
 
-      console.log(response);
+        if (isError) {
+          return this.setState({
+            loading: false,
+            usernameError: data.username,
+            emailError: data.email
+          });
+        }
+
+        return this.setState({
+          loading: false,
+          usernameError: {},
+          emailError: {}
+        });
+      });
     }
   }
 
   @boundMethod
   onChangeForm(value) {
-    return this.setState({ value });
+    return this.setState({ value });
   }
 
   render() {
@@ -47,7 +60,10 @@ export class SignUp extends Component {
           value={this.state.value}
           ref="form"
           type={SignUpSchema}
-          options={SignUpOptions}
+          options={SignUpOptions(
+            this.state.emailError,
+            this.state.usernameError
+          )}
           onChange={this.onChangeForm}
         />
         <div className="form-group">

@@ -7,26 +7,31 @@ const SignUpSchema = t.struct({
   password: Password
 });
 
-const SignUpOptions = {
-  auto: 'placeholders',
-
-  fields: {
-    email: {
-      attrs: {
-        autoFocus: true,
-        placeholder: 'Email address'
-      }
-    },
-
-    username: {},
-
-    password: {
-      type: 'password',
-      attrs: {
-        placeholder: 'Create a password'
+const SignUpOptions = (email, username) => {
+  return {
+    auto: 'placeholders',
+  
+    fields: {
+      email: {
+        ...email,
+        attrs: {
+          autoFocus: true,
+          placeholder: 'Email address'
+        }
+      },
+  
+      username: {
+        ...username
+      },
+  
+      password: {
+        type: 'password',
+        attrs: {
+          placeholder: 'Create a password'
+        }
       }
     }
-  }
-};
+  };
+}
 
 export { SignUpSchema, SignUpOptions };
