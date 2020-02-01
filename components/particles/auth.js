@@ -81,7 +81,13 @@ export class SignUp extends Component {
           </button>
         </div>
 
-        <p>
+        {this.props.showLoginText && (
+          <p className="text-center">
+            Already have an account? <a href="/login">Login</a>
+          </p>
+        )}
+
+        <p className="terms">
           By signing up you agree to the <a href="/terms">Terms of Service.</a>
         </p>
       </form>
@@ -147,6 +153,10 @@ export class SignIn extends Component {
             Sign In
           </button>
         </div>
+
+        <p className="text-center">
+          No account yet? <a href="/register">Sign up</a>
+        </p>
       </form>
     );
   }

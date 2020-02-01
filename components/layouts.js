@@ -24,7 +24,7 @@ export class Layout extends Component {
 export class SignLayout extends Component {
   render() {
     return (
-      <div className="sign-wrap">
+      <div>
         <Head />
         <LogoHeader />
         {this.props.children}

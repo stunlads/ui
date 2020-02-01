@@ -64,7 +64,7 @@ export class Header extends Component {
                   className="site-navigation position-relative text-right"
                   role="navigation"
                 >
-                  <a href="/sign-in" className="btn btn-white">
+                  <a href="/login" className="btn btn-white">
                     <span>Sign in</span>
                   </a>
                 </nav>
