@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
 
-export default class Header extends Component {
+export class LogoHeader extends Component {
+  render() {
+    return (
+      <header className="site-navbar relative-navbar py-4">
+        <div className="container-fluid">
+          <div className="d-flex align-items-center">
+            <div className="mx-auto text-center">
+              <div className="site-logo mr-auto w-25">
+                <a href="/">
+                  <img src="/static/images/text-logo.svg" width={120} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
+}
+
+export class Header extends Component {
   render() {
     return (
       <div className="sticky-wrapper">
@@ -22,7 +42,7 @@ export default class Header extends Component {
                 >
                   <ul className="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                     <li>
-                      <a href="#home-section" className="nav-link active">
+                      <a href="/" className="nav-link active">
                         Home
                       </a>
                     </li>
@@ -32,7 +52,7 @@ export default class Header extends Component {
                       </a>
                     </li>
                     <li>
-                      <a href="#programs-section" className="nav-link">
+                      <a href="/contact" className="nav-link">
                         Contact
                       </a>
                     </li>

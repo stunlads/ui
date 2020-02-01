@@ -20,10 +20,11 @@ class Api {
     return this.instance.post(url, data);
   }
 
-  respToData({ data: { status, data } }) {
+  respToData({ data: { status, data, message } }) {
     return {
       isError: _.isEqual(status, 'error'),
-      data
+      data,
+      message
     }
   }
 }

@@ -7,6 +7,11 @@ const SignUpSchema = t.struct({
   password: Password
 });
 
+const SignInSchema = t.struct({
+  username: Username,
+  password: Password
+});
+
 const SignUpOptions = (email, username) => {
   return {
     auto: 'placeholders',
@@ -34,4 +39,19 @@ const SignUpOptions = (email, username) => {
   };
 }
 
-export { SignUpSchema, SignUpOptions };
+const SignInOptions = {
+  auto: 'placeholders',
+
+  fields: {
+    username: {},
+
+    password: {
+      type: 'password',
+      attrs: {
+        placeholder: 'Password'
+      }
+    }
+  }
+};
+
+export { SignUpSchema, SignUpOptions, SignInSchema, SignInOptions };

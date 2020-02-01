@@ -418,3 +418,28 @@ fieldset {
 		}
 	}
 }
+
+.sign-wrap {
+	height: 100vh;
+	background-color: $indigo;
+
+	p {
+		color: $white;
+		margin-bottom: 0px;
+
+		a {
+			text-decoration: underline;
+			color: $white;
+			font-weight: bold;
+		}
+	}
+}
+
+#SignUpForm {
+	p {
+		font-size: 12px;
+		text-align: center;
+		color: $black;
+		margin-bottom: 0px;
+	}
+}
