@@ -1,16 +1,13 @@
 import getConfig from 'next/config';
 import axios from 'axios';
 import _ from 'underscore';
-import store from 'store';
+import cookie from 'js-cookie';
 
 // configs.
 const { publicRuntimeConfig } = getConfig()
 
 class Api {
   constructor() {
-
-    // authToken and userId
-    this.token = store.get("@token");
 
     // request axios instance.
     this.instance = axios.create({
@@ -20,12 +17,13 @@ class Api {
   }
 
   getHeader() {
-    const { token } = this;
+    const authToken = cookie.get('authToken');
+    const userId = cookie.get('userId');
 
-    if (token) {
+    if (authToken && userId) {
       return {
-        "X-Auth-Token": token.authToken,
-        "X-User-Id": token.userId
+        "X-Auth-Token": authToken,
+        "X-User-Id": userId
       }
     }
 
@@ -46,10 +44,6 @@ class Api {
       data,
       message
     }
-  }
-
-  user() {
-    return this.get('/user');
   }
 }
 
