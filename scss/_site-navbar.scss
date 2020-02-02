@@ -20,17 +20,6 @@
 		position: relative!important;
 	}
 
-
-	.container-fluid {
-		padding-left: 7rem;
-		padding-right: 7rem;
-		@include media-breakpoint-down(lg) {
-			padding-left: 15px;
-			padding-right: 15px;
-		}
-	}
-	
-	
 	.site-navigation {
 		&.border-bottom {
 			border-bottom: 1px solid lighten($gray-1, 80%)!important;
@@ -377,6 +366,10 @@
 	position: absolute;
 	z-index: 100;
 	width: 100%;
+
+	&.relative-wrapper {
+		position: relative;
+	}
 
 	& + .site-blocks-cover {
 		// margin-top: 140px;

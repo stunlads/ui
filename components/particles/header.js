@@ -12,7 +12,7 @@ export class LogoHeader extends Component {
   render() {
     return (
       <header className="site-navbar relative-navbar py-4">
-        <div className="container-fluid">
+        <div className="container">
           <div className="d-flex align-items-center">
             <div className="mx-auto text-center">
               <div className="site-logo mr-auto w-25">
@@ -35,10 +35,9 @@ export class Header extends Component {
     return (
       <div className="sticky-wrapper">
         <header
-          className="site-navbar py-4 js-sticky-header site-navbar-target"
-          role="banner"
+          className="site-navbar py-4"
         >
-          <div className="container-fluid">
+          <div className="container">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
                 <Link href="/">
@@ -106,11 +105,8 @@ export class AuthHeader extends Component {
 
   render() {
     return (
-      <div className="sticky-wrapper">
-        <header
-          className="site-navbar py-4 js-sticky-header site-navbar-target"
-          role="banner"
-        >
+      <div className="sticky-wrapper relative-wrapper">
+        <header className="site-navbar relative-navbar py-4">
           <div className="container-fluid">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
