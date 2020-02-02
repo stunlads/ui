@@ -14,10 +14,10 @@
 	z-index: 1999;
 	position: absolute;
 	width: 100%;
+	background-color: $indigo;
 
 	&.relative-navbar {
 		position: relative!important;
-		background-color: $indigo;
 	}
 
 

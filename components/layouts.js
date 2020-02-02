@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 // Components
 import Footer from './particles/footer';
-import { LogoHeader, Header } from './particles/header';
+import { LogoHeader, Header, AuthHeader } from './particles/header';
 import Head from './particles/head';
 
 // styles
@@ -27,6 +27,18 @@ export class SignLayout extends Component {
       <div>
         <Head />
         <LogoHeader />
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+export class AuthLayout extends Component {
+  render() {
+    return (
+      <div className="site-wrap">
+        <Head />
+        <AuthHeader />
         {this.props.children}
       </div>
     );

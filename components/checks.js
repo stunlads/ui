@@ -6,7 +6,7 @@ export class Auth extends Component {
     const { userId, authToken } = cookies(context);
     
 		if (userId && authToken) {
-      context.res.writeHead(302, { Location: '/dashboard' });
+      context.res.writeHead(302, { Location: '/admin' });
       context.res.end();
     }
     
