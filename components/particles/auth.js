@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import t from 'tcomb-form';
 import { boundMethod } from 'autobind-decorator';
+import cookie from 'js-cookie';
 
 // Forms
 import {
@@ -57,7 +58,7 @@ export class SignUp extends Component {
 
   render() {
     return (
-      <form id="SignUpForm" onSubmit={this.onSubmit} className="form-box">
+      <form className="form-box" id="SignUpForm" onSubmit={this.onSubmit}>
         <h3 className="h4 text-black mb-4 text-center font-weight-bold">
           Sign Up in seconds
         </h3>
@@ -111,10 +112,13 @@ export class SignIn extends Component {
       this.setState({ loading: true, isError: false });
 
       Api.post('/login', this.state.value)
-        .then(() => {
-          // logined
+        .then(({ data: { data } }) => {
+          const { authToken, userId } = data;
+
+          cookie.set('authToken', authToken);
+          cookie.set('userId', userId);
         })
-        .catch(() => {
+        .catch((e) => {
           this.setState({ loading: false, isError: true });
         });
     }
@@ -127,7 +131,7 @@ export class SignIn extends Component {
 
   render() {
     return (
-      <form id="SignInForm" onSubmit={this.onSubmit} className="form-box">
+      <form className="form-box" id="SignInForm" onSubmit={this.onSubmit}>
         <h3 className="h4 text-black mb-4 text-center font-weight-bold">
           Sign In
         </h3>

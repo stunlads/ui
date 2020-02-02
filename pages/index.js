@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 // Components
 import { Layout } from '../components/layouts';
 import { SignUp } from '../components/particles/auth';
+import { Auth } from '../components/checks';
 
-export default class Index extends Component {
+export default class Index extends Auth {
   render() {
     return (
       <Layout>
