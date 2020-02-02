@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
+import Link from 'next/link';
 import cookie from 'js-cookie';
 import { boundMethod } from 'autobind-decorator';
-import Router from 'next/router';
 
 // Utils
 import Api from '../../utils/api';
+import { ActiveLink } from '../../utils/shortcuts';
 
 export class LogoHeader extends Component {
   render() {
@@ -14,9 +16,11 @@ export class LogoHeader extends Component {
           <div className="d-flex align-items-center">
             <div className="mx-auto text-center">
               <div className="site-logo mr-auto w-25">
-                <a href="/">
-                  <img src="/static/images/text-logo.svg" width={120} />
-                </a>
+                <Link href="/">
+                  <a>
+                    <img src="/static/images/text-logo.svg" width={120} />
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -37,9 +41,11 @@ export class Header extends Component {
           <div className="container-fluid">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
-                <a href="/">
-                  <img src="/static/images/text-logo.svg" width={120} />
-                </a>
+                <Link href="/">
+                  <a>
+                    <img src="/static/images/text-logo.svg" width={120} />
+                  </a>
+                </Link>
               </div>
               <div className="mx-auto text-center">
                 <nav
@@ -48,9 +54,7 @@ export class Header extends Component {
                 >
                   <ul className="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                     <li>
-                      <a href="/" className="nav-link active">
-                        Home
-                      </a>
+                      <ActiveLink href="/">Home</ActiveLink>
                     </li>
                     <li>
                       <a href="#courses-section" className="nav-link">
@@ -58,9 +62,9 @@ export class Header extends Component {
                       </a>
                     </li>
                     <li>
-                      <a href="/contact" className="nav-link">
-                        Contact
-                      </a>
+                      <Link href="/contact">
+                        <a>Contact</a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>
@@ -70,9 +74,11 @@ export class Header extends Component {
                   className="site-navigation position-relative text-right"
                   role="navigation"
                 >
-                  <a href="/login" className="btn btn-white">
-                    <span>Sign in</span>
-                  </a>
+                  <Link href="/login">
+                    <a className="btn btn-white">
+                      <span>Sign in</span>
+                    </a>
+                  </Link>
                 </nav>
               </div>
             </div>
@@ -108,9 +114,11 @@ export class AuthHeader extends Component {
           <div className="container-fluid">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
-                <a href="/admin">
-                  <img src="/static/images/text-logo.svg" width={120} />
-                </a>
+                <Link href="/admin">
+                  <a>
+                    <img src="/static/images/text-logo.svg" width={120} />
+                  </a>
+                </Link>
               </div>
               <div className="mx-auto text-center">
                 <nav
@@ -119,14 +127,10 @@ export class AuthHeader extends Component {
                 >
                   <ul className="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                     <li>
-                      <a href="/admin" className="nav-link active">
-                        Links
-                      </a>
+                      <ActiveLink href="/admin">Links</ActiveLink>
                     </li>
                     <li>
-                      <a href="/admin/settings" className="nav-link">
-                        Settings
-                      </a>
+                      <ActiveLink href="/admin/settings">Settings</ActiveLink>
                     </li>
                   </ul>
                 </nav>

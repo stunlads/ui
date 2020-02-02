@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import t from 'tcomb-form';
-import { boundMethod } from 'autobind-decorator';
-import cookie from 'js-cookie';
 import Router from 'next/router';
+import Link from 'next/link';
+import cookie from 'js-cookie';
+import { boundMethod } from 'autobind-decorator';
 
 // Forms
 import {
@@ -85,12 +86,18 @@ export class SignUp extends Component {
 
         {this.props.showLoginText && (
           <p className="text-center">
-            Already have an account? <a href="/login">Login</a>
+            Already have an account?{' '}
+            <Link href="/login">
+              <a href="/login">Login</a>
+            </Link>
           </p>
         )}
 
         <p className="terms">
-          By signing up you agree to the <a href="/terms">Terms of Service.</a>
+          By signing up you agree to the{' '}
+          <Link href="/terms">
+            <a>Terms of Service.</a>
+          </Link>
         </p>
       </form>
     );
@@ -163,7 +170,10 @@ export class SignIn extends Component {
         </div>
 
         <p className="text-center">
-          No account yet? <a href="/register">Sign up</a>
+          No account yet?{' '}
+          <Link href="/register">
+            <a>Sign up</a>
+          </Link>
         </p>
       </form>
     );
