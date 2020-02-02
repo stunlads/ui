@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import cookie from 'js-cookie';
+import { boundMethod } from 'autobind-decorator';
+import Router from 'next/router';
+
+// Utils
+import Api from '../../utils/api';
 
 export class LogoHeader extends Component {
   render() {
@@ -78,6 +84,20 @@ export class Header extends Component {
 }
 
 export class AuthHeader extends Component {
+  @boundMethod
+  logout(e) {
+    e.preventDefault();
+
+    return Api.post('logout').then(() => {
+      // remove cookies.
+      cookie.remove('authToken');
+      cookie.remove('userId');
+
+      // redirect home page
+      return Router.push('/');
+    });
+  }
+
   render() {
     return (
       <div className="sticky-wrapper">
@@ -116,7 +136,11 @@ export class AuthHeader extends Component {
                   className="site-navigation position-relative text-right"
                   role="navigation"
                 >
-                  <a href="/login" className="btn btn-white">
+                  <a
+                    href="/login"
+                    className="btn btn-white"
+                    onClick={this.logout}
+                  >
                     <span>Sign Out</span>
                   </a>
                 </nav>

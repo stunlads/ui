@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import t from 'tcomb-form';
 import { boundMethod } from 'autobind-decorator';
 import cookie from 'js-cookie';
+import Router from 'next/router';
 
 // Forms
 import {
@@ -117,8 +118,11 @@ export class SignIn extends Component {
 
           cookie.set('authToken', authToken);
           cookie.set('userId', userId);
+
+          // redirect admin page
+          return Router.push('/admin');
         })
-        .catch((e) => {
+        .catch(e => {
           this.setState({ loading: false, isError: true });
         });
     }

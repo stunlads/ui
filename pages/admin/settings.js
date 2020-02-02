@@ -5,10 +5,6 @@ import { AuthLayout } from '../../components/layouts';
 
 export default class settings extends Component {
   render() {
-    return (
-      <AuthLayout>
-
-      </AuthLayout>
-    );
+    return <AuthLayout></AuthLayout>;
   }
 }
