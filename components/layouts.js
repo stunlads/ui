@@ -21,7 +21,7 @@ export class Layout extends Component {
   }
 }
 
-export class SignLayout extends Component {
+export class LogoLayout extends Component {
   render() {
     return (
       <div>

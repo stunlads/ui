@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 // Components
 import { Layout } from '../components/layouts';
 import { SignUp } from '../components/particles/auth';
-import { Auth } from '../components/checks';
+import { PublicAction } from '../components/actions';
 
-export default class Index extends Auth {
+export default class Index extends PublicAction {
   render() {
     return (
       <Layout>

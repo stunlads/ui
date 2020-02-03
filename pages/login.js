@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 // Components
-import { SignLayout } from '../components/layouts';
+import { LogoLayout } from '../components/layouts';
 import { SignIn } from '../components/particles/auth';
-import { Auth } from '../components/checks';
+import { PublicAction } from '../components/actions';
 
-export default class Login extends Auth {
+export default class Login extends PublicAction {
   render() {
     return (
-      <SignLayout>
+      <LogoLayout>
         <div className="container">
           <div className="align-items-center">
             <div className="row">
@@ -22,7 +22,7 @@ export default class Login extends Auth {
             </div>
           </div>
         </div>
-      </SignLayout>
+      </LogoLayout>
     );
   }
 }
