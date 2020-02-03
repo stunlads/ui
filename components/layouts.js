@@ -39,7 +39,15 @@ export class AuthLayout extends Component {
       <div className="site-wrap">
         <Head />
         <AuthHeader />
-        {this.props.children}
+
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-6">{this.props.children}</div>
+            <div className="col-6">
+              <h3 class="h4 section-title text-center py-3">Profile Preview</h3>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

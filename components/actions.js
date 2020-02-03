@@ -13,7 +13,7 @@ const writeHead = (context, options) => {
     Router.push(location);
   }
 
-  return {}
+  return {};
 };
 
 export class PublicAction extends Component {
@@ -31,11 +31,9 @@ export class PrivateAction extends Component {
   static async getInitialProps(context) {
     const { userId, authToken } = cookies(context);
 
-    console.log('dsds');
-
     return writeHead(context, {
       condition: !userId && !authToken,
-      location: '/login',
+      location: '/login'
     });
   }
 }
