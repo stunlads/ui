@@ -24,18 +24,24 @@ class ClientApi {
       return {
         'X-Auth-Token': authToken,
         'X-User-Id': userId
-      }
+      };
     }
 
-    return {}
+    return {};
   }
 
   get(url) {
-    return this.instance.get(url).then(this.transform);
+    return this.instance
+      .get(url)
+      .then(this.transform)
+      .catch(this.catchTransform);
   }
 
   post(url, data) {
-    return this.instance.post(url, data).then(this.transform);
+    return this.instance
+      .post(url, data)
+      .then(this.transform)
+      .catch(this.catchTransform);
   }
 
   respToData({ data: { status, data, message } }) {
@@ -47,14 +53,18 @@ class ClientApi {
   }
 
   transform({ data }) {
-    return data
+    return data;
+  }
+
+  catchTransform({ response: { data } }) {
+    return data;
   }
 }
 
 export class ServerApi extends ClientApi {
   constructor(context) {
     super();
-    
+
     const { userId, authToken } = cookies(context);
 
     // request axios instance.

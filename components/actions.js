@@ -8,48 +8,51 @@ import { ServerApi } from '../utils/api';
 
 export class PublicAction extends Component {
   static async getInitialProps(context) {
-    const Api = new ServerApi(context);
-    
-    // Get User
-    const { status } = await Api.get('/user');
+    const { userId, authToken } = cookies(context);
 
-    if (_.isEqual(status, 'success')) {
-      context.res.writeHead(302, { Location: '/admin' });
-      context.res.end();
+    // has userId and authToken
+    if (userId && authToken) {
 
-      // push router.
-      Router.push(location);
+      if (context.res) {
+        context.res.writeHead(302, { Location: '/admin' });
+        context.res.end();
+      }
+
+      Router.push('/admin');
     }
 
     return {
-       status
-    };
+      status: 'success'
+    }
   }
 }
 
 export class PrivateAction extends Component {
   static async getInitialProps(context) {
-    const Api = new ServerApi(context);
-    
-    // Get User
-    const { status, data } = await Api.get('/user');
+    const { userId, authToken } = cookies(context);
 
-    if (_.isEqual(status, 'success')) {
-      return {
-        status,
-        user: data
+    if (userId && authToken) {
+      const Api = new ServerApi(context);
+      const { status, data } = await Api.get('/user');
+
+      if (_.isEqual(status, 'success')) {
+        return {
+          status,
+          user: data
+        }
       }
     }
 
-    context.res.writeHead(302, { Location: '/login' });
-    context.res.end();
+    // Redirect login
+    if (context.res) {
+      context.res.writeHead(302, { Location: '/login' });
+      context.res.end();
+    }
 
-    // push router.
-    Router.push(location);
+    Router.push('/login');
 
     return {
-      status,
-      user: null
+      status: 'error'
     };
   }
 }

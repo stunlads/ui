@@ -33,10 +33,8 @@ export class SignUp extends Component {
     if (value) {
       this.setState({ loading: true });
 
-      Api.post('/users', this.state.value).then(resp => {
-        const { isError, data } = Api.respToData(resp);
-
-        if (isError) {
+      Api.post('/users', this.state.value).then(({ status, data }) => {
+        if (_.isEqual(status, 'error')) {
           return this.setState({
             loading: false,
             usernameError: data.username,
@@ -120,7 +118,7 @@ export class SignIn extends Component {
       this.setState({ loading: true, isError: false });
 
       Api.post('/login', this.state.value)
-        .then(({ data: { data } }) => {
+        .then(({ data }) => {
           const { authToken, userId } = data;
 
           cookie.set('authToken', authToken);
