@@ -8,7 +8,7 @@ export default class Links extends PrivateAction {
   render() {
     return (
       <AuthLayout>
-        <h3 class="h4 section-title text-center py-3">My Links</h3>
+        <h3 className="h4 section-title text-center py-3">My Links</h3>
       </AuthLayout>
     );
   }

@@ -2,28 +2,28 @@ import getConfig from 'next/config';
 import axios from 'axios';
 import _ from 'underscore';
 import cookie from 'js-cookie';
+import cookies from 'next-cookies';
 
 // configs.
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig } = getConfig();
 
-class Api {
+class ClientApi {
   constructor() {
+    const authToken = cookie.get('authToken');
+    const userId = cookie.get('userId');
 
     // request axios instance.
     this.instance = axios.create({
       baseURL: publicRuntimeConfig.API_URL,
-      headers: this.getHeader()
+      headers: this.headers(authToken, userId)
     });
   }
 
-  getHeader() {
-    const authToken = cookie.get('authToken');
-    const userId = cookie.get('userId');
-
+  headers(authToken, userId) {
     if (authToken && userId) {
       return {
-        "X-Auth-Token": authToken,
-        "X-User-Id": userId
+        'X-Auth-Token': authToken,
+        'X-User-Id': userId
       }
     }
 
@@ -31,20 +31,38 @@ class Api {
   }
 
   get(url) {
-    return this.instance.get(url);
+    return this.instance.get(url).then(this.transform);
   }
 
   post(url, data) {
-    return this.instance.post(url, data);
+    return this.instance.post(url, data).then(this.transform);
   }
 
-  respToData({ data: { status, data, message } }) {
+  respToData({ data: { status, data, message } }) {
     return {
       isError: _.isEqual(status, 'error'),
       data,
       message
-    }
+    };
+  }
+
+  transform({ data }) {
+    return data
   }
 }
 
-export default new Api();
+export class ServerApi extends ClientApi {
+  constructor(context) {
+    super();
+    
+    const { userId, authToken } = cookies(context);
+
+    // request axios instance.
+    this.instance = axios.create({
+      baseURL: publicRuntimeConfig.API_URL,
+      headers: this.headers(authToken, userId)
+    });
+  }
+}
+
+export default new ClientApi();
