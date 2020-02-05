@@ -46,7 +46,7 @@ export class AuthLayout extends Component {
           <div className="row">
             <div className="col-6">{this.props.children}</div>
             <div className="col-6">
-              <Preview />
+              <Preview username={user.username} />
             </div>
           </div>
         </div>

@@ -33,19 +33,19 @@ export class SignUp extends Component {
     if (value) {
       this.setState({ loading: true });
 
-      Api.post('/users', this.state.value).then(({ status, data }) => {
-        if (_.isEqual(status, 'error')) {
+      Api.post('/users', this.state.value).then(({ isSuccess, data }) => {
+        if (isSuccess) {
           return this.setState({
             loading: false,
-            usernameError: data.username,
-            emailError: data.email
+            usernameError: {},
+            emailError: {}
           });
         }
 
         return this.setState({
           loading: false,
-          usernameError: {},
-          emailError: {}
+          usernameError: data.username,
+          emailError: data.email
         });
       });
     }
