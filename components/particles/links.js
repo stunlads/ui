@@ -11,6 +11,7 @@ import ContentEditable from 'react-contenteditable';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Switch from 'rc-switch';
 
 // Components
 import { Loading } from './loading';
@@ -129,11 +130,18 @@ class Url extends Component {
 }
 
 class LinkItem extends Component {
+  @boundMethod
+  onChange(active) {
+    const { _id } = this.props.data;
+    return this.props.onToggle(_id, active);
+  }
+
   render() {
-    const { title, url, _id } = this.props.data;
+    const { title, url, _id, active } = this.props.data;
 
     return (
       <>
+        <Switch onChange={this.onChange} defaultChecked={active} />
         <div className="links__link--content">
           <Title title={title} _id={_id} />
           <Url url={url} _id={_id} />
@@ -157,16 +165,16 @@ const DragHandle = sortableHandle(() => {
   );
 });
 
-const SortableLink = SortableElement(({ data, onRemove }) => {
+const SortableLink = SortableElement(({ data, onRemove, onToggle }) => {
   return (
     <div className="links__link rounded bg-white why-choose-us-box">
       <DragHandle />
-      <LinkItem data={data} onRemove={onRemove} />
+      <LinkItem data={data} onRemove={onRemove} onToggle={onToggle} />
     </div>
   );
 });
 
-const SortableList = SortableContainer(({ items, onRemove }) => {
+const SortableList = SortableContainer(({ items, onRemove, onToggle }) => {
   if (_.isEmpty(items)) {
     return <NoResults />;
   }
@@ -179,6 +187,7 @@ const SortableList = SortableContainer(({ items, onRemove }) => {
           index={index}
           data={data}
           onRemove={() => onRemove(data._id)}
+          onToggle={onToggle}
         />
       ))}
     </div>
@@ -233,10 +242,18 @@ export default class Links extends Component {
 
   @boundMethod
   async onRemove(_id) {
+
     // remove data
     await Api.delete(`/links/${_id}`);
 
     return this.fetch();
+  }
+
+  @boundMethod
+  async onToggle(_id, active) {
+    await Api.put(`/links/${_id}`, {
+      active
+    })
   }
 
   render() {
@@ -262,6 +279,7 @@ export default class Links extends Component {
               items={items}
               onSortEnd={this.onSortEnd}
               onRemove={this.onRemove}
+              onToggle={this.onToggle}
               useDragHandle
             />
           </div>
