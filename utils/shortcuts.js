@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 
+const COMMUNITY_URL = 'https://github.com';
+
 export const ActiveLink = props => {
   const router = useRouter();
   const isActive = router.pathname === props.href;
@@ -18,4 +20,8 @@ export const ActiveLink = props => {
       {props.children}
     </a>
   );
+};
+
+export const absoluteGithubUrl = link => {
+  return `${COMMUNITY_URL}${link}`;
 };

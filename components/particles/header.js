@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
-import Link from 'next/link';
 import cookie from 'js-cookie';
 import { boundMethod } from 'autobind-decorator';
 
 // Utils
 import Api from '../../utils/api';
-import { ActiveLink } from '../../utils/shortcuts';
+import { ActiveLink, absoluteGithubUrl } from '../../utils/shortcuts';
 
 export class LogoHeader extends Component {
   render() {
@@ -16,11 +15,9 @@ export class LogoHeader extends Component {
           <div className="d-flex align-items-center">
             <div className="mx-auto text-center">
               <div className="site-logo mr-auto w-25">
-                <Link href="/">
-                  <a>
-                    <img src="/static/images/text-logo.svg" width={120} />
-                  </a>
-                </Link>
+                <a href="/">
+                  <img src="/static/images/text-logo.svg" width={120} />
+                </a>
               </div>
             </div>
           </div>
@@ -34,17 +31,13 @@ export class Header extends Component {
   render() {
     return (
       <div className="sticky-wrapper">
-        <header
-          className="site-navbar py-4"
-        >
+        <header className="site-navbar py-4">
           <div className="container">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
-                <Link href="/">
-                  <a>
-                    <img src="/static/images/text-logo.svg" width={120} />
-                  </a>
-                </Link>
+                <a href="/">
+                  <img src="/static/images/text-logo.svg" width={120} />
+                </a>
               </div>
               <div className="mx-auto text-center">
                 <nav
@@ -56,14 +49,15 @@ export class Header extends Component {
                       <ActiveLink href="/">Home</ActiveLink>
                     </li>
                     <li>
-                      <a href="#courses-section" className="nav-link">
+                      <a
+                        href={absoluteGithubUrl('/yoourlink')}
+                        className="nav-link"
+                      >
                         Github
                       </a>
                     </li>
                     <li>
-                      <Link href="/contact">
-                        <a>Contact</a>
-                      </Link>
+                      <a href="/contact">Contact</a>
                     </li>
                   </ul>
                 </nav>
@@ -73,11 +67,9 @@ export class Header extends Component {
                   className="site-navigation position-relative text-right"
                   role="navigation"
                 >
-                  <Link href="/login">
-                    <a className="btn btn-white">
-                      <span>Sign in</span>
-                    </a>
-                  </Link>
+                  <a href="/login" className="btn btn-white">
+                    <span>Sign in</span>
+                  </a>
                 </nav>
               </div>
             </div>
@@ -94,7 +86,6 @@ export class AuthHeader extends Component {
     e.preventDefault();
 
     return Api.post('logout').then(() => {
-      
       // remove cookies.
       cookie.remove('authToken');
       cookie.remove('userId');
@@ -111,11 +102,9 @@ export class AuthHeader extends Component {
           <div className="container-fluid">
             <div className="d-flex align-items-center">
               <div className="site-logo mr-auto w-25">
-                <Link href="/admin">
-                  <a>
-                    <img src="/static/images/text-logo.svg" width={120} />
-                  </a>
-                </Link>
+                <a href="/admin">
+                  <img src="/static/images/text-logo.svg" width={120} />
+                </a>
               </div>
               <div className="mx-auto text-center">
                 <nav

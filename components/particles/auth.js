@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import t from 'tcomb-form';
 import Router from 'next/router';
-import Link from 'next/link';
 import cookie from 'js-cookie';
 import { boundMethod } from 'autobind-decorator';
 
@@ -84,18 +83,12 @@ export class SignUp extends Component {
 
         {this.props.showLoginText && (
           <p className="text-center">
-            Already have an account?{' '}
-            <Link href="/login">
-              <a href="/login">Login</a>
-            </Link>
+            Already have an account? <a href="/login">Login</a>
           </p>
         )}
 
         <p className="terms">
-          By signing up you agree to the{' '}
-          <Link href="/terms">
-            <a>Terms of Service.</a>
-          </Link>
+          By signing up you agree to the <a href="/terms">Terms of Service.</a>
         </p>
       </form>
     );
@@ -125,7 +118,7 @@ export class SignIn extends Component {
           cookie.set('userId', userId);
 
           // redirect admin page
-          return Router.push('/admin');
+          location.href = "/";
         })
         .catch(e => {
           this.setState({ loading: false, isError: true });
@@ -168,10 +161,7 @@ export class SignIn extends Component {
         </div>
 
         <p className="text-center">
-          No account yet?{' '}
-          <Link href="/register">
-            <a>Sign up</a>
-          </Link>
+          No account yet? <a href="/register">Sign up</a>
         </p>
       </form>
     );
