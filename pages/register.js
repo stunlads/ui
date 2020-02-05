@@ -9,7 +9,7 @@ export default class Register extends PublicAction {
   render() {
     return (
       <LogoLayout>
-        <div className="container">
+        <div className="container mt-5">
           <div className="align-items-center">
             <div className="row">
               <div className="col-12">
