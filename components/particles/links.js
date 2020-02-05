@@ -9,6 +9,9 @@ import {
 import arrayMove from 'array-move';
 import ContentEditable from 'react-contenteditable';
 
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 // Components
 import { Loading } from './loading';
 
@@ -118,10 +121,30 @@ class Url extends Component {
         className="links__link--content-url"
         html={url}
         placeholder="http://url"
-        disabled={this.state.loading}
         onChange={this.handleChange}
         onBlur={this.onBlur}
       />
+    );
+  }
+}
+
+class LinkItem extends Component {
+  render() {
+    const { title, url, _id } = this.props.data;
+
+    return (
+      <>
+        <div className="links__link--content">
+          <Title title={title} _id={_id} />
+          <Url url={url} _id={_id} />
+        </div>
+
+        <div className="links__link--options">
+          <span onClick={this.props.onRemove}>
+            <FontAwesomeIcon icon={faTrash} width="14" />
+          </span>
+        </div>
+      </>
     );
   }
 }
@@ -134,21 +157,16 @@ const DragHandle = sortableHandle(() => {
   );
 });
 
-const SortableLink = SortableElement(({ data }) => {
-  const { _id, title, url } = data;
-
+const SortableLink = SortableElement(({ data, onRemove }) => {
   return (
     <div className="links__link rounded bg-white why-choose-us-box">
       <DragHandle />
-      <div className="links__link--content">
-        <Title title={title} _id={_id} />
-        <Url url={url} _id={_id} />
-      </div>
+      <LinkItem data={data} onRemove={onRemove} />
     </div>
   );
 });
 
-const SortableList = SortableContainer(({ items }) => {
+const SortableList = SortableContainer(({ items, onRemove }) => {
   if (_.isEmpty(items)) {
     return <NoResults />;
   }
@@ -156,7 +174,12 @@ const SortableList = SortableContainer(({ items }) => {
   return (
     <div className="links">
       {items.map((data, index) => (
-        <SortableLink key={`item-${data._id}`} index={index} data={data} />
+        <SortableLink
+          key={`item-${data._id}`}
+          index={index}
+          data={data}
+          onRemove={() => onRemove(data._id)}
+        />
       ))}
     </div>
   );
@@ -198,14 +221,21 @@ export default class Links extends Component {
   }
 
   @boundMethod
-  async insert() {
-    
+  async onInsert() {
     this.setState({ loading: true });
-    
+
     // insert blank
     await Api.post('/links');
 
     // fetch list.
+    return this.fetch();
+  }
+
+  @boundMethod
+  async onRemove(_id) {
+    // remove data
+    await Api.delete(`/links/${_id}`);
+
     return this.fetch();
   }
 
@@ -218,7 +248,7 @@ export default class Links extends Component {
 
         <button
           className="btn btn-indigo py-3 px-5 btn-block"
-          onClick={this.insert}
+          onClick={this.onInsert}
           disabled={loading}
         >
           Add New Link
@@ -231,6 +261,7 @@ export default class Links extends Component {
             <SortableList
               items={items}
               onSortEnd={this.onSortEnd}
+              onRemove={this.onRemove}
               useDragHandle
             />
           </div>

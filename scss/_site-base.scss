@@ -55,7 +55,7 @@ h5,
   // overflow: hidden;
 }
 
-[contenteditable=true]:empty:before {
+[contenteditable='true']:empty:before {
   content: attr(placeholder);
   display: block;
   color: #dbdee0;
@@ -475,8 +475,7 @@ fieldset {
   &__link {
     position: relative;
     margin-bottom: 10px;
-		min-height: 80px;
-		padding: 0 30px;
+    min-height: 80px;
 
     &--drag-handle {
       position: absolute;
@@ -489,33 +488,56 @@ fieldset {
       cursor: move;
       text-align: center;
       background-color: $indigo;
-			border-radius: 3px 0 0 3px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+      border-radius: 3px 0 0 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-			span {
-				width: 7px;
-				height: 7px;
-				background-color: $white;
-				display: block;
-				border-radius: 7px;
-			}
-		}
-		
-		&--content {
-      padding: 10px;
-      
+      span {
+        width: 7px;
+        height: 7px;
+        background-color: $white;
+        display: block;
+        border-radius: 7px;
+      }
+    }
+
+    &--content {
+      padding: 10px 40px;
+      padding-bottom: 0px;
+
       &-url,
       &-name {
         color: $black;
         font-size: 17px;
         font-weight: bold;
-        
+
         &:focus {
           outline: none;
         }
       }
-		}
+    }
+
+    &--options {
+      padding-right: 10px;
+      padding-bottom: 5px;
+
+      display: flex;
+      justify-content: flex-end;
+
+      span {
+        cursor: pointer;
+
+        path {
+          color: $gray-500;
+        }
+
+        &:hover {
+          path {
+            color: $gray-600;
+          }
+        }
+      }
+    }
   }
 }

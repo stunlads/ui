@@ -45,16 +45,18 @@ class ClientApi {
   }
 
   put(url, data) {
-    return this.instance
-      .put(url, data)
-      .then(this.transform)
+    return this.instance.put(url, data).then(this.transform);
+  }
+
+  delete(url) {
+    return this.instance.delete(url).then(this.transform);
   }
 
   transform({ data }) {
     return {
       isSuccess: _.isEqual(data.status, 'success'),
-      ...data,
-    }
+      ...data
+    };
   }
 
   catchTransform({ response: { data } }) {

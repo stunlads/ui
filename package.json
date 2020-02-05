@@ -11,6 +11,9 @@
   "author": "Yasar icli <yasaricli@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/react-fontawesome": "^0.1.8",
     "@zeit/next-sass": "^1.0.1",
     "array-move": "^2.2.1",
     "autobind-decorator": "^2.4.0",
