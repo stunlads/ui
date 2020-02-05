@@ -44,16 +44,17 @@ class ClientApi {
       .catch(this.catchTransform);
   }
 
-  respToData({ data: { status, data, message } }) {
-    return {
-      isError: _.isEqual(status, 'error'),
-      data,
-      message
-    };
+  put(url, data) {
+    return this.instance
+      .put(url, data)
+      .then(this.transform)
   }
 
   transform({ data }) {
-    return data;
+    return {
+      isSuccess: _.isEqual(data.status, 'success'),
+      ...data,
+    }
   }
 
   catchTransform({ response: { data } }) {

@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "array-move": "^2.2.1",
     "autobind-decorator": "^2.4.0",
     "axios": "^0.19.2",
     "config": "^3.2.5",
@@ -21,7 +22,9 @@
     "next-cookies": "^2.0.3",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
+    "react-contenteditable": "^3.3.3",
     "react-dom": "^16.12.0",
+    "react-sortable-hoc": "^1.11.0",
     "tcomb-form": "^0.9.21",
     "underscore": "^1.9.2"
   },

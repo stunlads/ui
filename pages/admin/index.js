@@ -3,12 +3,13 @@ import React, { Component } from 'react';
 // Components
 import { AuthLayout } from '../../components/layouts';
 import { PrivateAction } from '../../components/actions';
+import Links from '../../components/particles/links';
 
-export default class Links extends PrivateAction {
+export default class Admin extends PrivateAction {
   render() {
     return (
-      <AuthLayout>
-        <h3 className="h4 section-title text-center py-3">My Links</h3>
+      <AuthLayout {...this.props}>
+        <Links />
       </AuthLayout>
     );
   }

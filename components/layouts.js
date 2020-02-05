@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 // Components
 import Footer from './particles/footer';
-import { LogoHeader, Header, AuthHeader } from './particles/header';
 import Head from './particles/head';
+import Preview from './particles/preview';
+import { LogoHeader, Header, AuthHeader } from './particles/header';
 
 // styles
 import '../scss/style.scss';
@@ -35,16 +36,17 @@ export class LogoLayout extends Component {
 
 export class AuthLayout extends Component {
   render() {
+    const { user } = this.props;
+
     return (
-      <div className="site-wrap">
+      <div className="site-wrap admin">
         <Head />
         <AuthHeader />
-
         <div className="container-fluid">
           <div className="row">
             <div className="col-6">{this.props.children}</div>
             <div className="col-6">
-              <h3 className="h4 section-title text-center py-3">Profile Preview</h3>
+              <Preview />
             </div>
           </div>
         </div>

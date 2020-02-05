@@ -33,7 +33,7 @@ export class PrivateAction extends Component {
 
     if (userId && authToken) {
       const Api = new ServerApi(context);
-      const { status, data } = await Api.get('/user');
+      const { status, data } = await Api.get(`/users/${userId}`);
 
       if (_.isEqual(status, 'success')) {
         return {

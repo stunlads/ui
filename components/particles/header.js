@@ -94,6 +94,7 @@ export class AuthHeader extends Component {
     e.preventDefault();
 
     return Api.post('logout').then(() => {
+      
       // remove cookies.
       cookie.remove('authToken');
       cookie.remove('userId');
