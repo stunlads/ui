@@ -34,6 +34,18 @@ export class LogoLayout extends Component {
   }
 }
 
+export class ProfileLayout extends Component {
+  render() {
+    return (
+      <div>
+        <Head />
+        <LogoHeader />
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
 export class AuthLayout extends Component {
   render() {
     const { user } = this.props;

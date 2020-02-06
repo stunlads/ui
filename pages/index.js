@@ -29,8 +29,8 @@ export default class Index extends PublicAction {
                         or run a content platform.
                       </p>
                       <p data-aos="fade-up" data-aos-delay={300}>
-                        <a href="/~yoourlink" className="btn btn-white">
-                          /~yoourlink
+                        <a href="/yoourlink" className="btn btn-white">
+                          /yoourlink
                         </a>
                       </p>
                     </div>

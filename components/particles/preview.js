@@ -43,25 +43,29 @@ export default class Preview extends Component {
         {this.state.loading ? (
           <Loading />
         ) : (
-          <div className="preview-container">
-            <div className="preview-container__avatar">
-              <img src="/static/images/avatar.png" />
-            </div>
-            <div className="preview-container__username">
-              <p>@{username}</p>
-            </div>
-            <div className="preview-container__links">
-              {links.map(link => {
-                return (
-                  <a
-                    href={link.url}
-                    className="preview-container__links--link"
-                    target="_blank"
-                  >
-                    {link.title}
-                  </a>
-                );
-              })}
+          <div className="row">
+            <div className="col-8 m-auto">
+              <div className="preview-container">
+                <div className="preview-container__avatar">
+                  <img src="/static/images/avatar.png" />
+                </div>
+                <div className="preview-container__username">
+                  <p>@{username}</p>
+                </div>
+                <div className="preview-container__links">
+                  {links.map(link => {
+                    return (
+                      <a
+                        href={link.url}
+                        className="preview-container__links--link"
+                        target="_blank"
+                      >
+                        {link.title}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         )}
