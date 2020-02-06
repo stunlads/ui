@@ -82,7 +82,6 @@
 					margin-top: 20px;
 					margin-left: 0px;
 					background: $white;
-					transition: 0.2s 0s;
 				
 					&.arrow-top {
 						position: absolute;
@@ -109,7 +108,6 @@
 						// font-size: 16px;
 						text-transform: none;
 						letter-spacing: normal;
-						transition: 0s all;
 						color: $gray-800;
 					}
 					.active {
@@ -160,7 +158,6 @@
 				&:hover, &:focus, &:active {
 					cursor: pointer;
 					> .dropdown {
-						transition-delay: 0s;
 						margin-top: 0px;
 						visibility: visible;
 						opacity: 1;
@@ -194,7 +191,6 @@
 	
 	transform: translateX(110%);
 	box-shadow: -10px 0 20px -10px rgba(0,0,0,.1);
-	transition: .3s all ease-in-out;
 
 	.offcanvas-menu & {
 		transform: translateX(0%);
@@ -216,7 +212,6 @@
 				padding-right: 0px;
 				line-height: 1;
 				cursor: pointer;
-				transition: .3s all ease;
 				&:hover {
 					color: $gray-1;
 				}
@@ -299,7 +294,6 @@
 				top: 50%;
 				left: 50%;
 				transform: translate(-50%, -50%) rotate(-180deg);
-				transition: .3s all ease;
 			}
 			&.collapsed {
 				&:before {
@@ -376,7 +370,6 @@
 		margin-top: 96px;
 	}
 	.site-navbar {
-		transition: .3s all ease;
 		.site-menu {
 			> li {
 				display: inline-block;

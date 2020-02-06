@@ -87,7 +87,6 @@
 		opacity: 0;
 		visibility: hidden;
 		margin-top: 50px;
-		transition: .3s all ease-in-out;
 		&.active {
 			opacity: 1;
 			visibility: visible;
@@ -131,7 +130,6 @@
 			font-size: .7rem;
 			font-weight: 900;
 			text-transform: uppercase;
-			transition: .3s all ease;
 			.is-sticky & {
 				color: $white;
 			}
@@ -248,7 +246,6 @@
 		z-index: 1;
 		opacity: 0;
 		visibility: hidden;
-		transition: .3s all ease;
 	}
 	.work-text {
 		position: absolute;
@@ -258,7 +255,6 @@
 		opacity: 0;
 		visibility: hidden;
 		
-		transition: .3s all ease;
 		margin-top: 20px;
 
 		h3 {
@@ -282,7 +278,6 @@
 			visibility: visible;
 		}
 		.work-text {
-			transition-delay: .2s;
 			opacity: 1;
 			visibility: visible;
 			margin-top: 0px;
@@ -455,7 +450,6 @@
 				border-radius: 30px;
 				display: inline-block;
 				background: rgba($white, .4);
-				transition: .3s all ease;
 			}
 			&.active {
 				> span {
@@ -529,7 +523,6 @@
 }
 .course {
 	box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
-	transition: .3s all ease-in-out;
 	top: 0;
 	position: relative;
 	.course-inner-text {

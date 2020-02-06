@@ -14,7 +14,6 @@ body {
   color: $white;
 }
 a {
-  transition: 0.3s all ease;
   &:hover {
     text-decoration: none;
   }
@@ -70,7 +69,6 @@ h5,
 .site-wrap {
   &:before {
     display: none;
-    transition: 0.3s all ease-in-out;
     background: rgba(0, 0, 0, 0.6);
     content: '';
     position: absolute;
@@ -284,7 +282,6 @@ h5,
   }
   > div {
     transform: scale(1);
-    transition: 0.8s all ease-in-out;
   }
   &:hover,
   &:focus,
@@ -353,7 +350,6 @@ h5,
   color: $white !important;
   border-radius: 50%;
   position: relative;
-  transition: 0.3s all ease-in-out;
   > span {
     font-size: 50px;
     position: absolute;
