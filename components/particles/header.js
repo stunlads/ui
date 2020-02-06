@@ -56,9 +56,6 @@ export class Header extends Component {
                         Github
                       </a>
                     </li>
-                    <li>
-                      <a href="/contact">Contact</a>
-                    </li>
                   </ul>
                 </nav>
               </div>
@@ -86,12 +83,13 @@ export class AuthHeader extends Component {
     e.preventDefault();
 
     return Api.post('logout').then(() => {
+      
       // remove cookies.
       cookie.remove('authToken');
       cookie.remove('userId');
 
       // redirect home page
-      return Router.push('/');
+      location.href = '/';
     });
   }
 

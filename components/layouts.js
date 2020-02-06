@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 // Components
-import Footer from './particles/footer';
 import Head from './particles/head';
 import Preview from './particles/preview';
 import { LogoHeader, Header, AuthHeader } from './particles/header';
@@ -16,7 +15,6 @@ export class Layout extends Component {
         <Head />
         <Header />
         {this.props.children}
-        <Footer />
       </div>
     );
   }
