@@ -7,14 +7,19 @@ import { ProfileLayout } from '../components/layouts';
 import { ServerApi } from '../utils/api';
 
 const NotFound = () => {
-  return <div>KULLANICI YOK!</div>;
+  return (
+    <div className="preview-profile__not-found">
+      <h2>The page you’re looking for doesn’t exist.</h2>
+      <a href="/">Return to the homepage</a>
+    </div>
+  );
 };
 
 const Profile = ({ data }) => {
   const { username, links } = data;
 
   return (
-    <div className="container">
+    <div className="preview-profile__container">
       <div className="row">
         <div className="col-7 m-auto">
           <div className="preview-container no-border">
@@ -25,12 +30,13 @@ const Profile = ({ data }) => {
               <p>@{username}</p>
             </div>
             <div className="preview-container__links">
-              {links.map(link => {
+              {links.map((link, i) => {
                 return (
                   <a
                     href={link.url}
                     className="preview-container__links--link"
                     target="_blank"
+                    key={i}
                   >
                     {link.title}
                   </a>
@@ -61,7 +67,9 @@ export default class User extends Component {
 
     return (
       <ProfileLayout>
-        {isSuccess ? <Profile data={data} /> : <NotFound />}
+        <div className="preview-profile">
+          {isSuccess ? <Profile data={data} /> : <NotFound />}
+        </div>
       </ProfileLayout>
     );
   }
