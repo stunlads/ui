@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Frontend with Next.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next -p $PORT",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p $PORT"
   },
   "repository": "https://github.com/yoourlink/ui.git",
   "author": "Yasar icli <yasaricli@gmail.com>",
