@@ -1,14 +1,18 @@
 import Head from 'next/head';
 
-export default () => {
+export default ({ username, description }) => {
   return (
     <Head>
-      <meta charset="utf-8" />
-      <title>yoourlink | your links everywhere</title>
+      <meta charset="UTF-8" />
+      <title>
+        Yoourlink | {username ? `${username} Admin` : 'your links everywhere'}
+      </title>
+      {description && <meta content={description} name="description" />}
       <link rel="icon" type="image/png" href="/favicon.png" />
+
       <meta
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
         name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
 
       <link

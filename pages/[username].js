@@ -10,7 +10,7 @@ const NotFound = () => {
   return <div>KULLANICI YOK!</div>;
 };
 
-const User = ({ data }) => {
+const Profile = ({ data }) => {
   const { username, links } = data;
 
   return (
@@ -44,7 +44,7 @@ const User = ({ data }) => {
   );
 };
 
-export default class Profile extends Component {
+export default class User extends Component {
   static async getInitialProps(context) {
     const { username } = context.query;
     const Api = new ServerApi(context);
@@ -61,7 +61,7 @@ export default class Profile extends Component {
 
     return (
       <ProfileLayout>
-        {isSuccess ? <User data={data} /> : <NotFound />}
+        {isSuccess ? <Profile data={data} /> : <NotFound />}
       </ProfileLayout>
     );
   }

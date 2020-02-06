@@ -52,7 +52,7 @@ export class AuthLayout extends Component {
 
     return (
       <div className="site-wrap admin">
-        <Head />
+        <Head username={user.username} />
         <AuthHeader />
         <div className="container-fluid">
           <div className="row">
