@@ -8,7 +8,8 @@ const sassPlugin = [withSass, {}];
 // Configs
 const RUNTIME_CONFIG = {
   API_URL: config.get('API_URL'),
-  ROOT_URL: config.get('ROOT_URL')
+  ROOT_URL: config.get('ROOT_URL'),
+  COMMUNITY_URL: config.get('COMMUNITY_URL')
 };
 
 module.exports = withPlugins([sassPlugin], {

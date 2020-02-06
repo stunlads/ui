@@ -6,6 +6,7 @@ import { Loading } from './loading';
 
 // Utils
 import Api from '../../utils/api';
+import { absoluteUrl } from '../../utils/shortcuts';
 
 export default class Preview extends Component {
   state = {
@@ -39,7 +40,13 @@ export default class Preview extends Component {
 
     return (
       <>
-        <h3 className="h4 section-title text-center py-3">Profile Preview</h3>
+        <h3 className="h4 section-title text-center py-3 mb-0">Profile Preview</h3>
+        <p className="text-center py-3">
+          My Yoourlink:{' '}
+          <a href={absoluteUrl(`/${username}`)} target="_blank" className="link-underline">
+            {absoluteUrl(`/${username}`, false)}
+          </a>
+        </p>
         {this.state.loading ? (
           <Loading />
         ) : (
