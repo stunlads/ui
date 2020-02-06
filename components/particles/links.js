@@ -46,9 +46,9 @@ class Title extends Component {
 
   @boundMethod
   handleChange(evt) {
-    const { value } = evt.target;
+    const { textContent } = evt.currentTarget;
 
-    return this.setState({ title: value });
+    return this.setState({ title: textContent });
   }
 
   @boundMethod
@@ -96,8 +96,9 @@ class Url extends Component {
 
   @boundMethod
   handleChange(evt) {
-    const { value } = evt.target;
-    return this.setState({ url: value });
+    const { textContent } = evt.currentTarget;
+
+    return this.setState({ url: textContent });
   }
 
   @boundMethod

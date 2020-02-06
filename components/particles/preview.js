@@ -36,7 +36,8 @@ export default class Preview extends Component {
   }
 
   render() {
-    const { username, links } = this.state.data;
+    const { username } = this.props;
+    const { links } = this.state.data;
 
     return (
       <>
