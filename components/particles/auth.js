@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import t from 'tcomb-form';
-import Router from 'next/router';
-import cookie from 'js-cookie';
 import { boundMethod } from 'autobind-decorator';
 
 // Forms
@@ -14,6 +12,7 @@ import {
 
 // Utils
 import Api from '../../utils/api';
+import { setAuthCookie } from '../../utils/shortcuts';
 
 export class SignUp extends Component {
   state = {
@@ -23,6 +22,18 @@ export class SignUp extends Component {
     emailError: {},
     usernameError: {}
   };
+
+  login(username, password) {
+    return Api.post('/login', { username, password }).then(({ data }) => {
+      const { authToken, userId } = data;
+
+      // set
+      setAuthCookie(authToken, userId);
+
+      // redirect admin page
+      location.href = '/admin';
+    });
+  }
 
   @boundMethod
   onSubmit(evt) {
@@ -34,11 +45,7 @@ export class SignUp extends Component {
 
       Api.post('/users', this.state.value).then(({ isSuccess, data }) => {
         if (isSuccess) {
-          return this.setState({
-            loading: false,
-            usernameError: {},
-            emailError: {}
-          });
+          return this.login(value.username, value.password);
         }
 
         return this.setState({
@@ -114,11 +121,11 @@ export class SignIn extends Component {
         .then(({ data }) => {
           const { authToken, userId } = data;
 
-          cookie.set('authToken', authToken);
-          cookie.set('userId', userId);
+          // set auth token.
+          setAuthCookie(authToken, userId);
 
           // redirect admin page
-          location.href = "/";
+          location.href = '/admin';
         })
         .catch(e => {
           this.setState({ loading: false, isError: true });
