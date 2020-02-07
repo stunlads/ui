@@ -36,15 +36,21 @@ export default class Preview extends Component {
   }
 
   render() {
-    const { username } = this.props;
+    const { username } = this.props;
     const { links } = this.state.data;
 
     return (
       <>
-        <h3 className="h4 section-title text-center py-3 mb-0">Profile Preview</h3>
+        <h3 className="h4 section-title text-center py-3 mb-0">
+          Profile Preview
+        </h3>
         <p className="text-center py-3">
           My Yoourlink:{' '}
-          <a href={absoluteUrl(`/${username}`)} target="_blank" className="link-underline">
+          <a
+            href={absoluteUrl(`/${username}`)}
+            target="_blank"
+            className="link-underline"
+          >
             {absoluteUrl(`/${username}`, false)}
           </a>
         </p>
@@ -61,13 +67,14 @@ export default class Preview extends Component {
                   <p>@{username}</p>
                 </div>
                 <div className="preview-container__links">
-                  {links.map(link => {
+                  {links.map((link, i) => {
                     return (
                       <a
                         href={link.url}
                         className="preview-container__links--link"
                         target="_blank"
                         style={{ backgroundColor: link.color }}
+                        key={i}
                       >
                         {link.title}
                       </a>

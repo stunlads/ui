@@ -1,8 +1,8 @@
 import t from 'tcomb-form';
-import { Email, Username, Password } from '../../utils/refinements';
+import { Email, Username, Password } from '../../utils/refinements';
 
 const SignUpSchema = t.struct({
-  email:  Email,
+  email: Email,
   username: Username,
   password: Password
 });
@@ -12,10 +12,16 @@ const SignInSchema = t.struct({
   password: Password
 });
 
+const SettingsSchema = t.struct({
+  name: t.String,
+  username: t.maybe(Username),
+  email: t.maybe(Email)
+});
+
 const SignUpOptions = (email, username) => {
   return {
     auto: 'placeholders',
-  
+
     fields: {
       email: {
         ...email,
@@ -24,11 +30,11 @@ const SignUpOptions = (email, username) => {
           placeholder: 'Email address'
         }
       },
-  
+
       username: {
         ...username
       },
-  
+
       password: {
         type: 'password',
         attrs: {
@@ -37,7 +43,7 @@ const SignUpOptions = (email, username) => {
       }
     }
   };
-}
+};
 
 const SignInOptions = {
   auto: 'placeholders',
@@ -54,4 +60,39 @@ const SignInOptions = {
   }
 };
 
-export { SignUpSchema, SignUpOptions, SignInSchema, SignInOptions };
+const SettingsOptions = {
+  auto: 'placeholders',
+
+  fields: {
+    name: {
+      error: 'Please enter your name',
+      attrs: {
+        autoFocus: true,
+        placeholder: 'Name'
+      }
+    },
+
+    username: {
+      disabled: true,
+      attrs: {
+        placeholder: 'Username'
+      }
+    },
+
+    email: {
+      disabled: true,
+      attrs: {
+        placeholder: 'Email address'
+      }
+    }
+  }
+};
+
+export {
+  SignUpSchema,
+  SignUpOptions,
+  SignInSchema,
+  SignInOptions,
+  SettingsSchema,
+  SettingsOptions
+};
