@@ -608,3 +608,18 @@ fieldset {
     @extend .container;
   }
 }
+
+.circle-picker {
+  margin: 0px!important;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+
+  span {
+    > div {
+      margin-bottom: 0px!important;
+    }
+  }
+}

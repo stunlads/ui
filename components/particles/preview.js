@@ -67,6 +67,7 @@ export default class Preview extends Component {
                         href={link.url}
                         className="preview-container__links--link"
                         target="_blank"
+                        style={{ backgroundColor: link.color }}
                       >
                         {link.title}
                       </a>

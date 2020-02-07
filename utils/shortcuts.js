@@ -5,6 +5,16 @@ import cookie from 'js-cookie';
 // Configs
 const { publicRuntimeConfig } = getConfig();
 
+export const COLORS = [
+  '#2756FB',
+  '#f44336',
+  '#e91e63',
+  '#9c27b0',
+  '#673ab7',
+  '#3f51b5',
+  '#2196f3'
+];
+
 export const ActiveLink = props => {
   const router = useRouter();
   const isActive = router.pathname === props.href;

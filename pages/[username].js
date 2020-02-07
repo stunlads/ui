@@ -37,6 +37,9 @@ const Profile = ({ data }) => {
                     className="preview-container__links--link"
                     target="_blank"
                     key={i}
+                    style={{
+                      backgroundColor: link.color
+                    }}
                   >
                     {link.title}
                   </a>
