@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
 
 // Components
 import { ProfileLayout } from '../components/layouts';
@@ -20,6 +21,9 @@ const Profile = ({ data }) => {
 
   return (
     <div className="preview-profile__container">
+      <Head>
+        <title>@{username} | Yoourlink</title>
+      </Head>
       <div className="row">
         <div className="col-7 m-auto">
           <div className="preview-container no-border">
